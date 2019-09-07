@@ -1,0 +1,4 @@
+geckodriver.log
+twistd.pid
+dbs/default.db
+logs/default/icrawler

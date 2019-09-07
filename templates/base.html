@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Scraper{% endblock %}</title>
+    <link rel="shortcut icon" href="/static/inc/images/fav_icon.png" type="image/x-icon">
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/inc/css/cards.css">
+    <link rel="stylesheet" type="text/css" href="/static/inc/css/forum.css">
+
+</head>
+
+<body>
+
+        <!-- START NAV -->
+        <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="/">
+                                <img src="/static/inc/images/bulma.png" alt="Logo">
+                            </a>
+                        <span class="navbar-burger burger" data-target="navbarMenu">
+                                <span></span>
+                        <span></span>
+                        <span></span>
+                        </span>
+                    </div>
+                    <div id="navbarMenu" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="navbar-item" href="{% url 'scrapy-go' %}">
+                                    scrapy-go
+                                </a>
+                            <a class="navbar-item" href="{% url 'scrapy-job-list' %}">
+                                    scrapy-job-list
+                                </a>
+                            <a class="navbar-item" href="{% url 'avito-run' %}">
+                                    avito-run
+                                </a>
+                            <a class="navbar-item" href="{% url 'avito-list' %}">
+                                    avito-list
+                                </a>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">
+                                        Account
+                                    </a>
+                                <div class="navbar-dropdown">
+                                    {% if user.is_authenticated %}
+                                        <div class="navbar-item">
+                                            Logged as:&nbsp<b>{{ user.get_username }}</b>
+                                        </div>
+                                        <hr class="navbar-divider">
+                                        <a href="{% url 'logout'%}?next={{request.path}}" class="navbar-item">Logout</a>
+                                    {% else %}
+                                        <li><a href="{% url 'login'%}?next={{request.path}}" class="navbar-item">Login</a></li>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- END NAV -->
+
+    <section class="container">
+			<div class="columns">
+				<div class="column is-3">
+					<a class="button is-primary is-block is-alt is-large" href="#">New Post</a>
+					<aside class="menu">
+						<p class="menu-label">
+							Tags
+						</p>
+						<ul class="menu-list">
+							<li><span class="tag is-primary is-medium ">Dashboard</span></li>
+							<li><span class="tag is-link is-medium ">Customers</span></li>
+							<li><span class="tag is-light is-danger is-medium ">Authentication</span></li>
+							<li><span class="tag is-dark is-medium ">Payments</span></li>
+							<li><span class="tag is-success is-medium ">Transfers</span></li>
+							<li><span class="tag is-warning is-medium ">Balance</span></li>
+							<li><span class="tag is-medium ">Question</span></li>
+						</ul>
+					</aside>
+				</div>
+				<div class="column is-9">
+					<div class="box content">
+
+                        {% block content %}{% endblock content %}
+
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+    <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <div class="soc">
+                        <a href="#"><i class="fa fa-github-alt fa-2x" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+                    </div>
+                    <p>
+                        <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>.
+                        The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. <br>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="/static/inc/js/bulma.js"></script>
+
+
+</body>
+
+</html>

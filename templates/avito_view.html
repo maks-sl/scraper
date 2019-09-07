@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load render_table from django_tables2 %}
+{% block title %}Avito detail page{% endblock title %}
+
+{% block content %}
+    <h1>Avito <span class="tag is-medium ">{{ avito.unique_id }}</span></h1>
+
+    <p class="menu-label">{{ avito.url }}</p>
+    <div class="columns">
+        <div class="column is-2">
+        </div>
+        <div class="column is-10">
+                History
+            {% render_table history_table %}
+        </div>
+    </div>
+{% endblock content %}

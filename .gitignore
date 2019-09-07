@@ -1,0 +1,11 @@
+*~
+*.o
+*.moc
+*.pyc
+moc_*.cpp
+Makefile*
+qrc_*.cpp
+/.idea
+/scrapy_app/logs
+db.sqlite3
+*.db

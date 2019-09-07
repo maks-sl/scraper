@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}Avito Start{% endblock title %}
+
+{% block content %}
+    <h1>Avito price checker</h1>
+    <form action="{% url 'avito-run' %}" method="post">
+        {% csrf_token %}
+        {{ avito_form }}
+        <button type="submit" class="btn btn-success">
+          Run!
+        </button>
+    </form>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}T-List{% endblock title %}
+
+{% block content %}
+    <h1>ALL TASKS</h1>
+
+    {% if task_list %}
+    <ul>
+
+      {% for task in task_list %}
+      <li class="{% if task.is_overdue %}text-danger{% endif %}">
+        <a href="{% url 'scrapy-task-info' task_id=task.task_id unique_id=task.unique_id %}">{{task.name}} - {{task.date}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no tasks.</p>
+    {% endif %}
+{% endblock %}
